@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Join Name</h1>
+    <br>
+    
+    <hr>
+    <label for="name" >First name:</label><br>
+    <input type="text" id="first"><br><br>
+    <label for="name" >Last name:</label><br>
+    <input type="text" id="last"><br><br>
+    <button onclick="wrap()">Join my name</button>
+    <script>
+        function wrap(){
+            var a= document.getElementById('first').value;
+            var b= document.getElementById('last').value;
+            document.write("your name is "+ a + " " + b);
+        }
+    </script>
+</body>
+</html>

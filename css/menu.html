@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Restaurant Menu</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; background-color: #fafafa; color: #333;">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fdfdfd;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 20px 60px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #666;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #f44336;
+    }
+
+    .reservation-btn {
+      padding: 10px 20px;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .reservation-btn:hover {
+      background-color: #c62828;
+    }
+
+    /* Container */
+    .container {
+      padding: 40px 80px;
+    }
+
+    .container h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+    }
+
+    .menu-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-img {
+      position: relative;
+    }
+
+    .menu-img img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: orange;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .menu-content {
+      padding: 20px;
+    }
+
+    .menu-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .menu-title h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .price {
+      background-color: #f5f5f5;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      font-size: 14px;
+      color: #999;
+      margin-left: 8px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-top: 5px;
+      color: #666;
+    }
+
+    .rating span {
+      margin: 0 5px;
+      color: #f9a825;
+    }
+  </style>
+  
+  <!-- Navigation Menu -->
+  <nav class="navbar">
+    <div class="logo">Crispy Kitchen</div>
+    <ul class="nav-links">
+      <li><a href="hotel.html">Home</a></li>
+      <li><a href="story.html" class="active">Story</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="#">Our Updates</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="reservation-btn">Reservation</button>
+  </nav>
+
+  <!-- Header Section -->
+  <header style="position: relative; text-align: center; color: white; margin-bottom: 40px;">
+    <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/header/luisa-brimble-aFzg83dvnAI-unsplash.jpg" alt="Header Image" style="width: 100%; max-height: 400px; object-fit: cover;" />
+    <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 48px; font-weight: bold; text-shadow: 2px 2px 6px rgba(0,0,0,0.7); margin: 0;">
+      Show Our Menu
+    </h1>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container" style="padding: 40px 80px; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Page Title -->
+    <h2 style="font-size: 32px; font-weight: bold; margin-bottom: 40px; text-align: center; color: #333;">Our Menu</h2>
+
+    <!-- Breakfast Section -->
+    <section id="breakfast">
+      <h3 style="font-size: 24px; font-weight: 700; color: rgb(8, 7, 5); margin-bottom: 20px;">Breakfast Menu</h3>
+      <div class="menu-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; margin-bottom: 50px;">
+
+        <!-- Breakfast Menu Item 1 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/brett-jordan-8xt8-HIFqc8-unsplash.jpg" alt="Morning Fresh" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Morning Fresh</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$12.50</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              4.3/5 <span style="margin: 0 5px; color: #f9a825;">★★★★★</span> 102 Reviews
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakfast Menu Item 2 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/louis-hansel-dphM2U1xq0U-unsplash.jpg" alt="Burger Set" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Burger Set</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$20.50</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              4.3/5 <span style="margin: 0 5px; color: #f9a825;">★★★★★</span> 102 Reviews
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Lunch Section -->
+    <section id="lunch">
+      <h3 style="font-size: 24px; font-weight: 700; color: rgb(7, 7, 6); margin-bottom: 20px;">Lunch Menu</h3>
+      <div class="menu-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; margin-bottom: 50px;">
+      
+        <!-- Lunch Menu Item 1 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/farhad-ibrahimzade-MGKqxm6u2bc-unsplash.jpg" alt="Tooplate Soup" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Tooplate Soup</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$24.50</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              3/5 <span style="margin: 0 5px; color: #f9a825;">★★★☆☆</span> 50 Reviews
+            </div>
+          </div>
+        </div>
+
+        <!-- Lunch Menu Item 2 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/farhad-ibrahimzade-D5c9ZciQy_I-unsplash.jpg" alt="Healthy Soup" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Healthy Soup</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$25.50</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              3.5/5 <span style="margin: 0 5px; color: #f9a825;">★★★★☆</span> 30 Reviews
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dinner Section -->
+    <section id="dinner">
+      <h3 style="font-size: 24px; font-weight: 700; color: rgb(15, 15, 14); margin-bottom: 20px;">Dinner Menu</h3>
+      <div class="menu-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px;">
+
+        <!-- Dinner Menu Item 1 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/keriliwi-c3mFafsFz2w-unsplash.jpg" alt="Keriliwi Dinner" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Keriliwi Dinner</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$30.00</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              4.5/5 <span style="margin: 0 5px; color: #f9a825;">★★★★★</span> 200 Reviews
+            </div>
+          </div>
+        </div> 
+
+        <!-- Dinner Menu Item 2 -->
+        <div class="menu-item" style="border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+          <div class="menu-img" style="position: relative; margin: 15px; border-radius: 8px; overflow: hidden;">
+            <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/farhad-ibrahimzade-ZipYER3NLhY-unsplash.jpg" alt="Seafood Set" style="width: 100%; height: 350px; object-fit: cover; display: block; border-radius: 8px;" />
+          </div>
+          <div class="menu-content" style="padding: 0 20px 20px 20px;">
+            <div class="menu-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 18px; font-weight: 600;">Seafood Set</h4>
+              <div class="price" style="background-color: #f5f5f5; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: 600; color: #333;">$84.00</div>
+            </div>
+            <div class="rating" style="display: flex; align-items: center; font-size: 14px; margin-top: 5px; color: #666;">
+              4.5/5 <span style="margin: 0 5px; color: #f9a825;">★★★★★</span> 200 Reviews
+            </div>
+          </div>
+        </div> 
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

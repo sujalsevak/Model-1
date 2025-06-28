@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Crispy Kitchen</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #fdfdfd;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 20px 60px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #666;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #f44336;
+    }
+
+    .reservation-btn {
+      padding: 10px 20px;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .reservation-btn:hover {
+      background-color: #c62828;
+    }
+
+    /* Container */
+    .container {
+      padding: 40px 80px;
+    }
+
+    .container h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+    }
+
+    .menu-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-img {
+      position: relative;
+    }
+
+    .menu-img img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: orange;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .menu-content {
+      padding: 20px;
+    }
+
+    .menu-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .menu-title h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .price {
+      background-color: #f5f5f5;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      font-size: 14px;
+      color: #999;
+      margin-left: 8px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-top: 5px;
+      color: #666;
+    }
+
+    .rating span {
+      margin: 0 5px;
+      color: #f9a825;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav class="navbar">
+    <div class="logo">Crispy Kitchen</div>
+    <ul class="nav-links">
+      <li><a href="hotel.html">Home</a></li>
+      <li><a href="story.html" class="active">Story</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="#">Our Updates</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="reservation-btn">Reservation</button>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h2>Special Menus</h2>
+    <div class="menu-grid">
+
+      <!-- Menu Item 1 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/brett-jordan-8xt8-HIFqc8-unsplash.jpg" alt="Morning Fresh" />
+          <div class="tag">Breakfast</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Morning Fresh</h4>
+            <div class="price">$12.50</div>
+          </div>
+          <div class="rating">
+            4.3/5 <span>★★★★★</span> 102 Reviews
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 2 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/farhad-ibrahimzade-MGKqxm6u2bc-unsplash.jpg" alt="Tooplate Soup" />
+          <div class="tag">Lunch</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Tooplate Soup</h4>
+            <div class="price">$24.50</div>
+          </div>
+          <div class="rating">
+            3/5 <span>★★★☆☆</span> 50 Reviews
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 3 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/keriliwi-c3mFafsFz2w-unsplash.jpg" alt="Premium Steak" />
+          <div class="tag">Dinner</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Premium Steak</h4>
+            <div class="price">$45</div>
+          </div>
+          <div class="rating">
+            3/5 <span>★★★☆☆</span> 86 Reviews
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 4 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/farhad-ibrahimzade-ZipYER3NLhY-unsplash.jpg" alt="Seafood Set" />
+          <div class="tag">Dinner</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Seafood Set</h4>
+            <div class="price">$86 <span class="old-price">$124</span></div>
+          </div>
+          <div class="rating">
+            3/5 <span>★★★☆☆</span> 44 Reviews
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 5 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/louis-hansel-dphM2U1xq0U-unsplash.jpg" alt="Burger Set" />
+          <div class="tag">Breakfast</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Burger Set</h4>
+            <div class="price">$20.50</div>
+          </div>
+          <div class="rating">
+            4.3/5 <span>★★★★★</span> 102 Reviews
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 6 -->
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/farhad-ibrahimzade-D5c9ZciQy_I-unsplash.jpg" alt="Healthy Soup" />
+          <div class="tag">Lunch</div>
+        </div>
+        <div class="menu-content">
+          <div class="menu-title">
+            <h4>Healthy Soup</h4>
+            <div class="price">$34.20</div>
+          </div>
+          <div class="rating">
+            3/5 <span>★★★☆☆</span> 64 Reviews
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

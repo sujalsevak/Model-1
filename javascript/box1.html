@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <button onclick="boxClick()">Click Here!</button>
+    </div>
+    
+    <script>
+        var a = document.body;
+        a.style.display = "flex";
+        a.style.justifyContent = "center";
+        
+        var b = document.getElementById('box');
+        b.style.height = "80px";
+        b.style.width = "80px";
+        b.style.border = "2px solid black";
+        b.style.display = "flex";
+        b.style.alignItems = "center";
+        b.style.justifyContent = "center";
+
+        
+
+        function boxClick() {
+            b.innerHTML = "SUJAL SEVAK";
+        }
+    </script>
+</body>
+</html>

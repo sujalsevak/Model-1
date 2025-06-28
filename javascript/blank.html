@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Your Team</title>
+    
+</head>
+<body>
+    <div class="container">
+        
+        
+       
+        <input type="text" id="first" placeholder="Enter your first name">
+        
+       
+        <button onclick="wrap()">Update!</button>
+        <p id="result" style="height: 500px; width: 800px; border: 2px solid black;"></p>
+    </div>
+    <script>
+        function wrap(){
+            var a = document.getElementById('first').value;
+            
+            
+            document.getElementById("result").innerHTML =   a ;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  </head>
+  <body class="">
+    <div class="flex justify-between items-center px-8 py-4 h-2 text-white bg-amber-900">
+      <div>Admission Helpline: +91-79-35201300 / +91-79-6604630</div>
+      <div class="flex space-x-6 items-center">
+        <p>EXAM</p>
+        <p>IQ</p>
+        <p>CARRERS</p>
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-youtube"></i>
+        <i class="fa fa-twitter"></i>
+      </div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="w-[20%] flex justify-center items-center">
+        <img
+          src="https://silveroakuni.ac.in/upload/images/250x70.webp"
+          alt=""
+          class="h-[80%]"/>
+      </div>
+      <div class="flex w-[70%] items-center">
+        <ul class="flex w-full justify-evenly">
+          <li>
+            <a href="#" class="text-red-600">About</a>
+          </li>
+
+          <li>
+            <a href="#">Admisstions</a>
+          </li>
+
+          <li>
+            <a href="#">Acdemics</a>
+          </li>
+
+          <li>
+            <a href="#">Event</a>
+          </li>
+
+          <li>
+            <a href="gallery.html">Gallery</a>
+          </li>
+
+          <li>
+            <a href="#">Placement</a>
+          </li>
+
+          <li>
+            <a href="#">Student Corner</a>
+          </li>
+
+          <li>
+            <a href="#">Approvals</a>
+          </li>
+
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="relative mt-10 w-full h-[500px] overflow-hidden">
+      <div
+      class="flex transition-transform duration-700 ease-in-out w-full h-full"
+      id="slider"
+      >
+      <img
+        src="https://silveroakuni.ac.in/upload/images/slider/active/2.webp"
+        class="w-full h-[500px] object-cover flex-shrink-0"
+      />
+      <img
+        src="https://silveroakuni.ac.in/upload/images/slider/active/5.webp"
+        class="w-full h-[500px] object-cover flex-shrink-0"
+      />
+      <img
+        src="https://silveroakuni.ac.in/upload/images/slider/active/1.webp"
+        class="w-full h-[500px] object-cover flex-shrink-0"
+      />
+      <img
+        src="https://silveroakuni.ac.in/upload/images/slider/active/6.webp"
+        class="w-full h-[500px] object-cover flex-shrink-0"
+      />
+      </div>
+      <button
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/75 p-3 rounded-full z-10"
+      onclick="moveSlide('prev')"
+      >
+      <i class="fa fa-chevron-left text-2xl text-amber-900"></i>
+      </button>
+      <button
+      class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white/75 p-3 rounded-full z-10"
+      onclick="moveSlide('next')"
+      >
+      <i class="fa fa-chevron-right text-2xl text-amber-900"></i>
+      </button>
+    </div>
+
+    <style>
+      #slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      }
+      
+      #slider img {
+      min-width: 100%;
+      object-fit: cover;
+      }
+      
+      .slider-btn {
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      }
+      
+      .slider-btn:hover {
+      opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+      #slider {
+        height: 300px;
+      }
+      }
+    </style>
+
+    <script>
+      const slider = document.getElementById("slider");
+      const slides = slider.getElementsByTagName("img");
+      let currentSlide = 0;
+      let autoSlideInterval;
+
+      function updateSlider() {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      function moveSlide(direction) {
+        if (direction === "next") {
+          currentSlide = (currentSlide + 1) % slides.length;
+        } else {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        }
+        updateSlider();
+      }
+
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          moveSlide("next");
+        }, 3500);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+
+      slider.addEventListener("mouseenter", stopAutoSlide);
+      slider.addEventListener("mouseleave", startAutoSlide);
+
+      // Initialize
+      updateSlider();
+      startAutoSlide();
+    </script>
+
+    <div class="container px-4 py-8">
+      <div class="grid md:grid-cols-2 gap-8 px-40">
+        <div class="relative">
+          <div
+            class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+          >
+            <img
+              src="https://silveroakuni.ac.in/upload/images/slider/active/5.webp"
+              alt="Video thumbnail"
+              class="w-full h-full object-cover transition duration-300 transform group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i
+                class="fa fa-youtube absolute text-6xl text-red-600 hover:text-red-700"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center space-y-6">
+          <div class="space-y-4">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              Silver Oak University(SOU) is premier private university carrying
+              forward the legacy of Silver Oak Group of Institutes.
+            </p>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              As a reflection to its motto,
+              <span class="font-semibold text-amber-900"
+                >Gyanam Param Bhushanam</span
+              >
+              meaning Knowledge is the highest virtue, SOU delivers engaging
+              learning experience through futuristic curriculum, advanced
+              technological interface, eminent faculty, industry academia
+              bonding, career planning and counseling and ample career
+              opportunities.
+            </p>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center space-x-2 bg-amber-900 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition duration-300"
+            >
+              <i class="fa fa-forward" aria-hidden="true"></i>
+              <span>Read More...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="bg-gray-100 py-10 px-4">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+
+    <!-- Illuminate 2.0 -->
+    <div class="bg-white shadow">
+      <div class="bg-green-800 text-white font-bold text-lg px-4 py-2">
+        Illuminate: 2.0
+      </div>
+      <table class="w-full text-left text-gray-700">
+        <tbody>
+          <tr class="border-t">
+            <td class="px-4 py-2">Industrial Design/ Design Patent</td>
+            <td class="px-4 py-2 text-right">103</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Product Patent</td>
+            <td class="px-4 py-2 text-right">4</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Copyright</td>
+            <td class="px-4 py-2 text-right">5</td>
+          </tr>
+          <tr class="border-t font-bold">
+            <td class="px-4 py-2">Total IPR</td>
+            <td class="px-4 py-2 text-right">112</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-white shadow">
+        <div class="bg-green-800 text-white font-bold text-lg px-4 py-2">
+          Illuminate: 1.0
+        </div>
+        <table class="w-full text-left text-gray-700">
+          <tbody>
+            <tr class="border-t">
+              <td class="px-4 py-2">Industrial Design/ Design Patent</td>
+              <td class="px-4 py-2 text-right">81</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-2">Product Patent</td>
+              <td class="px-4 py-2 text-right">0</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-2">Copyright</td>
+              <td class="px-4 py-2 text-right">0</td>
+            </tr>
+            <tr class="border-t font-bold">
+              <td class="px-4 py-2">Total IPR</td>
+              <td class="px-4 py-2 text-right">81</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-[#812727] text-white py-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      
+      
+      <div>
+        <p class="text-4xl font-bold">90%</p>
+        <p class="uppercase text-sm tracking-wide mt-1">Placements</p>
+      </div>
+      
+      
+      <div>
+        <p class="text-4xl font-bold">500+</p>
+        <p class="uppercase text-sm tracking-wide mt-1">Recruitment Companies</p>
+      </div>
+      
+      
+      <div>
+        <p class="text-4xl font-bold">150+</p>
+        <p class="uppercase text-sm tracking-wide mt-1">Research Publications</p>
+      </div>
+
+    </div>
+  </section>
+
+
+    <section>
+      <h2
+        class="text-2xl font-bold text-center text-red-800 underline underline-offset-4 mt-12"
+      >
+        DISCIPLINES
+      </h2>
+    <div class="min-h-screen bg-white-900 flex items-center justify-center p-6">
+      
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl"
+      >
+        <div class="bg-green-800 p-6 text-center text-white rounded-lg shadow">
+          NURSING
+        </div>
+        <div class="bg-blue-800 p-6 text-center text-white rounded-lg shadow">
+          PHYSIOTHERAPY
+        </div>
+        <div class="bg-purple-800 p-6 text-center text-white rounded-lg shadow">
+          PHARMACY
+        </div>
+
+        <div class="bg-teal-800 p-6 text-center text-white rounded-lg shadow">
+          PARAMEDICAL
+        </div>
+        <div class="bg-red-800 p-6 text-center text-white rounded-lg shadow">
+          ENGAGING
+        </div>
+        <div class="bg-yellow-800 p-6 text-center text-white rounded-lg shadow">
+          COMPUTER APPLICATION
+        </div>
+
+        <div class="bg-pink-800 p-6 text-center text-white rounded-lg shadow">
+          DESIGN
+        </div>
+        <div class="bg-indigo-800 p-6 text-center text-white rounded-lg shadow">
+          AVIATION
+        </div>
+        <div class="bg-orange-800 p-6 text-center text-white rounded-lg shadow">
+          ANIMATION
+        </div>
+
+        <div class="bg-lime-800 p-6 text-center text-white rounded-lg shadow">
+          MANAGEMENT
+        </div>
+        <div class="bg-cyan-800 p-6 text-center text-white rounded-lg shadow">
+          COMMERCE
+        </div>
+        <div class="bg-rose-800 p-6 text-center text-white rounded-lg shadow">
+          SOCIAL SCIENCE
+        </div>
+
+        <div class="bg-sky-800 p-6 text-center text-white rounded-lg shadow">
+          SCIENCE
+        </div>
+        <div class="bg-violet-800 p-6 text-center text-white rounded-lg shadow">
+          LAW
+        </div>
+        <div
+          class="bg-emerald-800 p-6 text-center text-white rounded-lg shadow"
+        >
+          LIBERAL STUDENT
+        </div>
+
+        <div class="bg-slate-800 p-6 text-center text-white rounded-lg shadow">
+          CENTRE FOR RESEARCH
+        </div>
+        <div class="bg-zinc-800 p-6 text-center text-white rounded-lg shadow">
+          PHD
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+
+    <section class="bg-gray-100 py-12 px-6">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+        <!-- GALLERY TITLE -->
+        <div class="md:col-span-3">
+          <h2
+            class="text-2xl font-bold text-red-800 underline underline-offset-4 mb-6 text-center"
+          >
+            GALLERY
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Gallery Item -->
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/festival_celebration/2025/m_1.webp"
+                alt="Festival"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Festival Celebration
+              </p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/convocation/2025/m_1.webp"
+                alt="Convocation"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Convocation
+              </p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/celebrity/2024/m_1.webp"
+                alt="Celebrity"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Celebrity at SOU
+              </p>
+            </div>
+
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/rass_rasiya/2024/m_1.webp"
+                alt="Rass Rasiya"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Rass Rasiya
+              </p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/independence_day/2024/m_1.webp"
+                alt="Independence Day"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Independence Day
+              </p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/foundation_day/2024/m_1.webp"
+                alt="Foundation Day"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Foundation Day
+              </p>
+            </div>
+
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/days_celebration/m_1.webp"
+                alt="Rass Rasiya"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">
+                Days Celebration
+              </p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/junoon/2024/m_1.webp"
+                alt="Independence Day"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">Junoon</p>
+            </div>
+            <div class="bg-white shadow p-2">
+              <img
+                src="https://silveroakuni.ac.in/upload/images/gallery/events/2024/m_1.webp"
+                alt="Foundation Day"
+                class="w-full h-40 object-cover"
+              />
+              <p class="text-center font-semibold text-red-800 mt-2">Events</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- OUR RANKING -->
+        <div>
+          <h2
+            class="text-2xl font-bold text-red-800 underline underline-offset-4 mb-6 text-center"
+          >
+            OUR RANKING
+          </h2>
+          <div
+            class="bg-white shadow p-4 flex flex-col items-center text-center space-y-6"
+          >
+            <div>
+              <img
+                src="https://silveroakuni.ac.in/upload/images/toi.webp"
+                class="mx-auto mb-2"
+              />
+              <p class="font-bold text-green-700 text-lg">7TH RANK</p>
+              <p>The Times of India</p>
+            </div>
+            <div>
+              <img
+                src="https://silveroakuni.ac.in/upload/images/myfm.webp"
+                class="mx-auto mb-2"
+              />
+              <p class="font-bold text-green-700 text-lg">
+                MOST INNOVATIVE<br />ENGINEERING COLLEGE
+              </p>
+              <p>My FM</p>
+            </div>
+            <div>
+              <img
+                src="https://silveroakuni.ac.in/upload/images/theweek.webp"
+                class="mx-auto mb-2"
+              />
+              <p class="font-bold text-green-700 text-lg">12th Rank</p>
+              <p>THE WEEK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-12 px-6 text-center">
+      <h2
+        class="text-2xl font-bold text-red-800 underline underline-offset-4 mb-6"
+      >
+        STRAIGHT FROM THE SOU STUDENTS
+      </h2>
+
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-6"
+      >
+        <!-- Video Embed or Thumbnail -->
+        <div class="relative">
+          <div
+            class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+          >
+            <img
+              class="w-full h-56 bg-cover"
+              src="https://silveroakuni.ac.in/upload/images/home/video-testimonial-1.webp"
+              title="Student 1"
+              allowfullscreen
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i
+                class="fa fa-youtube absolute text-6xl text-red-600 hover:text-red-700"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+          >
+            <img
+              class="w-full h-56 bg-cover"
+              src="https://silveroakuni.ac.in/upload/images/home/video-testimonial-2.webp"
+              title="Student 1"
+              allowfullscreen
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i
+                class="fa fa-youtube absolute text-6xl text-red-600 hover:text-red-700"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
+          >
+            <img
+              class="w-full h-56 bg-cover"
+              src="https://silveroakuni.ac.in/upload/images/home/video-testimonial-3.webp"
+              title="Student 1"
+              allowfullscreen
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i
+                class="fa fa-youtube absolute text-6xl text-red-600 hover:text-red-700"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        class="mt-6 bg-red-800 text-white px-6 py-2 rounded hover:bg-red-700 transition"
+      >
+        ⏩ View More...
+      </button>
+    </section>
+
+    <footer class="bg-gray-100 py-12">
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-gray-800"
+      >
+        
+        <div>
+          <h3
+            class="text-lg font-semibold text-red-800 underline underline-offset-4 mb-3"
+          >
+            SILVER OAK UNIVERSITY
+          </h3>
+          <ul class="space-y-2">
+            <li><a href="#">About SOU</a></li>
+            <li><a href="#">Mission & Vision</a></li>
+            <li><a href="#">MOUs</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- LEADERSHIP -->
+        <div>
+          <h3
+            class="text-lg font-semibold text-red-800 underline underline-offset-4 mb-3"
+          >
+            LEADERSHIP
+          </h3>
+          <ul class="space-y-2">
+            <li><a href="#">Management</a></li>
+            <li><a href="#">Provost</a></li>
+            <li><a href="#">Registrar</a></li>
+            <li><a href="#">Governing Body</a></li>
+          </ul>
+        </div>
+
+        <!-- PLACEMENT + ACHIEVEMENTS -->
+        <div>
+          <h3
+            class="text-lg font-semibold text-red-800 underline underline-offset-4 mb-3"
+          >
+            PLACEMENT
+          </h3>
+          <ul class="space-y-2 mb-6">
+            <li><a href="#">Overview of Placement</a></li>
+            <li><a href="#">Testimonials</a></li>
+          </ul>
+          <h3
+            class="text-lg font-semibold text-red-800 underline underline-offset-4 mb-3"
+          >
+            ACHIEVEMENTS
+          </h3>
+          <ul class="space-y-2">
+            <li><a href="#">Grants</a></li>
+            <li><a href="#">Rankings</a></li>
+            <li><a href="#">Students Achievements</a></li>
+            <li><a href="#">Faculty Recognition</a></li>
+            <li><a href="#">Awards</a></li>
+          </ul>
+        </div>
+
+        <!-- STUDENT FACILITIES -->
+        <div>
+          <h3
+            class="text-lg font-semibold text-red-800 underline underline-offset-4 mb-3"
+          >
+            STUDENT FACILITIES
+          </h3>
+          <ul class="space-y-2">
+            <li><a href="#">Accommodation</a></li>
+            <li><a href="#">Laboratories</a></li>
+            <li><a href="#">E-Library</a></li>
+            <li><a href="#">Incubation Center</a></li>
+            <li><a href="#">Student Clubs</a></li>
+            <li><a href="#">IEEE Student Branch</a></li>
+            <li><a href="#">Health Care Services</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Silver Oak University</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div
+      class="flex justify-between items-center px-8 py-4 h-2 text-white bg-amber-900"
+    >
+      <div>Admission Helpline: +91-79-35201300 / +91-79-6604630</div>
+      <div class="flex space-x-6 items-center">
+        <p>EXAM</p>
+        <p>IQ</p>
+        <p>CAREERS</p>
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-youtube"></i>
+        <i class="fa fa-twitter"></i>
+      </div>
+    </div>
+    <div class="flex flex-wrap">
+      <div class="w-[20%] flex justify-center items-center">
+        <img
+          src="https://silveroakuni.ac.in/upload/images/250x70.webp"
+          alt="Logo"
+          class="h-[80%]"
+        />
+      </div>
+      <div class="flex w-[70%] items-center">
+        <ul class="flex w-full justify-evenly">
+          <li><p class="text-red-600">About</p></li>
+          <li>Admissions</li>
+          <li>Academics</li>
+          <li>Event</li>
+          <li>
+            <a
+              href="gallery.html"
+              class="text-gray-800 hover:text-red-600 cursor-pointer"
+              >Gallery</a
+            >
+          </li>
+          <li>Placement</li>
+          <li>Student Corner</li>
+          <li>Approvals</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container px-4 py-8">
+      <div class="grid md:grid-cols-2 gap-8 px-40">
+        <div class="relative">
+          <div
+            id="video-container"
+            class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer w-full aspect-[250/140]"
+          >
+            <img
+              src="https://silveroakuni.ac.in/upload/images/home/video_thumb1.webp"
+              alt="Video thumbnail"
+              class="w-full h-full object-cover transition duration-300 transform group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity"
+              onclick="playVideo()"
+            >
+              <i
+                class="fa fa-youtube text-6xl text-red-600 hover:text-red-700"
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center space-y-6">
+          <div class="space-y-4">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              Silver Oak University(SOU) is premier private university
+              carrying forward the legacy of Silver Oak Group of Institutes.
+            </p>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              As a reflection to its motto,
+              <span class="font-semibold text-amber-900"
+                >Gyanam Param Bhushanam</span
+              >
+              meaning Knowledge is the highest virtue, SOU delivers engaging
+              learning experience through futuristic curriculum, advanced
+              technological interface, eminent faculty, industry academia
+              bonding, career planning and counseling and ample career
+              opportunities.
+            </p>
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center space-x-2 bg-amber-900 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition duration-300"
+            >
+              <i class="fa fa-forward" aria-hidden="true"></i>
+              <span>Read More...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 px-40 mt-10">
+        <div class="overflow-x-auto">
+          <table class="min-w-full border border-gray-300">
+            <thead>
+              <tr class="bg-amber-900 text-white">
+                <th class="text-left px-4 py-2" colspan="2">Illuminate: 2.0</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-300">
+                <td class="w-3/4 px-4 py-2">Industrial Design/ Design Patent</td>
+                <td class="w-1/4 px-4 py-2 text-right">103</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Product Patent</td>
+                <td class="px-4 py-2 text-right">4</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Copyright</td>
+                <td class="px-4 py-2 text-right">5</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Total IPR</td>
+                <td class="px-4 py-2 text-right">112</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full border border-gray-300">
+            <thead>
+              <tr class="bg-amber-900 text-white">
+                <th class="text-left px-4 py-2" colspan="2">Illuminate: 1.0</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-300">
+                <td class="w-3/4 px-4 py-2">Industrial Design/ Design Patent</td>
+                <td class="w-1/4 px-4 py-2 text-right">81</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Product Patent</td>
+                <td class="px-4 py-2 text-right">0</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Copyright</td>
+                <td class="px-4 py-2 text-right">0</td>
+              </tr>
+              <tr class="border-t border-gray-300">
+                <td class="px-4 py-2">Total IPR</td>
+                <td class="px-4 py-2 text-right">81</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      </div>
+
+          <div class="min-h-screen bg-white-900 flex items-center justify-center p-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-6xl">
+
+    <div class="bg-green-800 p-6 text-center text-white rounded-lg shadow">NURSING</div>
+    <div class="bg-blue-800 p-6 text-center text-white rounded-lg shadow">PHYSIOTHERAPY</div>
+    <div class="bg-purple-800 p-6 text-center text-white rounded-lg shadow">PHARMACY</div>
+
+    <div class="bg-teal-800 p-6 text-center text-white rounded-lg shadow">PARAMEDICAL</div>
+    <div class="bg-red-800 p-6 text-center text-white rounded-lg shadow">ENGAGING</div>
+    <div class="bg-yellow-800 p-6 text-center text-white rounded-lg shadow">COMPUTER APPLICATION</div>
+
+    <div class="bg-pink-800 p-6 text-center text-white rounded-lg shadow">DESIGN</div>
+    <div class="bg-indigo-800 p-6 text-center text-white rounded-lg shadow">AVIATION</div>
+    <div class="bg-orange-800 p-6 text-center text-white rounded-lg shadow">ANIMATION</div>
+
+    <div class="bg-lime-800 p-6 text-center text-white rounded-lg shadow">MANAGEMENT</div>
+    <div class="bg-cyan-800 p-6 text-center text-white rounded-lg shadow">COMMERCE</div>
+    <div class="bg-rose-800 p-6 text-center text-white rounded-lg shadow">SOCIAL SCIENCE</div>
+
+    <div class="bg-sky-800 p-6 text-center text-white rounded-lg shadow">SCIENCE</div>
+    <div class="bg-violet-800 p-6 text-center text-white rounded-lg shadow">LAW</div>
+    <div class="bg-emerald-800 p-6 text-center text-white rounded-lg shadow">LIBERAL STUDENT</div>
+
+    <div class="bg-slate-800 p-6 text-center text-white rounded-lg shadow">CENTRE FOR RESEARCH</div>
+    <div class="bg-zinc-800 p-6 text-center text-white rounded-lg shadow">PHD</div>
+  </div>
+</div>
+
+
+
+    <script>
+      function playVideo() {
+        const container = document.getElementById("video-container");
+        container.innerHTML = `
+          <iframe 
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/y80iD-tF6qc?autoplay=1&rel=0" 
+            title="Silver Oak University Video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        `;
+      }
+    </script>
+     <footer>
+        <div class="bg-blue-200 py-10">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-6">
+                <div>
+                    <h1 class="text-xl font-bold text-red-900 mb-4 underline">SILVER OAK UNIVERSITY</h1>
+                    <ul class="space-y-2">
+                        <li>About SOU</li>
+                        <li>Mission & Visions</li>
+                        <li>MOUs</li>
+                        <li>Testimonials</li>
+                        <li>Carrers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-red-900 mb-4 underline">LEADERSHIP</h1>
+                    <ul class="space-y-2">
+                        <li>Management</li>
+                        <li>Provost</li>
+                        <li>Registrara</li>
+                        <li>Governing Body</li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-red-900 mb-4 underline">PLACEMENTS</h1>
+                    <ul class="space-y-2">
+                        <li>Overview of Placements</li>
+                        <li>Testimonials</li>
+                        
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-red-900 mb-4 underline">STUDENT FACILITIE</h1>
+                    <ul class="space-y-2">
+                        <li>Accomodation</li>
+                        <li>Laboratories</li>
+                        <li>E-library</li>
+                        <li>Incubation center</li>
+                        <li>Student Clubs</li>
+                        <li>IEEE Student Branch</li>
+                        <li>Health Care Services</li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-red-900 mb-4 underline">ACHIEVEMENTS</h1>
+                    <ul class="space-y-2">
+                        <li>Grants</li>
+                        <li>Rankings</li>
+                        <li>Student Achievements</li>
+                        <li>Facility Recognitation</li>
+                        <li>Awards underline</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

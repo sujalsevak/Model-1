@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .clock {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(85, 245, 232);
+            display: grid;
+            place-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <h1>timer</h1>
+    </div>
+</body>
+<script>
+    let h1 = document.createElement("h1");
+    let main = document.querySelector(".clock");
+    main.appendChild(h1);
+    setInterval(function() {
+        let time = new Date();
+
+        let sec = time.getSeconds();
+        let min = time.getMinutes();
+        let h = time.getHours();
+        // console.log("hello")
+        h1.innerText = `${h}h ${min}m ${sec}s`;
+        // console.log(main.innerHTML);
+        
+
+    } ,1000)
+</script>
+</html>
+
+
+
+
+<!-- <div class="clock">
+  <h1 id="timeDisplay">Loading time...</h1>
+</div>
+
+<script>
+  const h1 = document.getElementById("timeDisplay");
+
+  setInterval(() => {
+    const now = new Date();
+    h1.innerText = now.toLocaleTimeString();  // e.g., "4:13:02 PM"
+  }, 1000);
+</script> -->

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="gogita">Computer is a ..... machine</h1>
+    <button onclick="correctAnswer()">electronic</button>
+    <button onclick="wrongAnswer()">natural</button>
+    <p id="ans"></p>
+    <script>
+        function correctAnswer() {
+            document.getElementById("ans").innerHTML = "CORRECT ANSWER";
+        }
+
+        function wrongAnswer() {
+            document.getElementById("ans").innerHTML = "WRONG ANSWER";
+        }
+    </script>
+</body>
+</html>

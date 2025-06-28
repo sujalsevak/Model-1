@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* The margin-top fails because a <label> is an inline element, which cannot have vertical margins. The solutions work by changing its CSS display property to inline-block or by wrapping it in a div. This makes the element a block-level box that properly respects vertical spacing. */
+        .form_container{
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+        }
+        .lables{
+            margin-right: 15px;
+        }
+        .inputs {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;"> FORM REGISTRATION </h1>
+    <hr>
+    <div class="form_container">
+        <form action="" method="get">
+            <label for="firstname" class="lables">FirstName : </label>
+            <input type="text" id="firstname" name="firstname" class="inputs">
+            <div class="err-mesage"></div>
+            <br>
+            <label for="lastname" class="lables">LastName : </label>
+            <input type="text" id="lastname" name="lastname" class="inputs">
+            <div class="err-mesage"></div>
+            <br>
+            <label for="gender"> Gender :  </label> <br>
+            <label for="male" style="margin-top: 10px;">Male : </label>
+            <input type="radio" name="gender" id="male">
+            <label for="female" style="margin-top: 10px;"> Female : </label>
+            <input type="radio" name="gender" id="female">
+            <br>
+            <label for="email" class="lables" >Email : </label>
+            <input type="email" id="email" name="email" class="inputs" style="margin-top: 15px;">
+            <div class="err-mesage"></div>
+            <br>
+            <label for="contact_number" class="lables">Ph.Number : </label>
+            <input type="number" id="contact_number" name="Phone_Number" class="inputs">
+            <div class="err-mesage"></div>
+            <br>
+            <button id="submit"> submit </button>
+        </form>
+    </div>
+    <script>
+        let submit = document.getElementById("submit");
+        submit.addEventListener("click", (e) => {
+           
+            let fname = document.getElementById("firstname").value;
+            if(fname === ""){
+                e.preventDefault();
+                let  p = document.createElement("p");
+                p.innerText = "enter yopur first name!";
+                p.style.color = "red";
+                console.log("half done");
+                document.getElementsByClassName("inputs")[0].placeholder = "enter name first";
+                let input1 = document.getElementsByClassName("err-mesage")[0];
+                input1.style.display = " inline-block";
+                input1.appendChild(p);
+                console.log("done");
+                // alert("name is empty")              
+            }
+            else {
+                alert("good");
+            }
+
+        })
+
+
+    </script>
+</body>
+</html>

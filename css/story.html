@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crispy Kitchen - Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100;200;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Sarabun', sans-serif;
+    }
+    body {
+      background-color: #f8f8f8;
+      color: #3a3a3a;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    a {
+      text-decoration: none;
+      color: #e03e2f;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #b72c20;
+    }
+    /* Navbar */
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #e03e2f;
+      letter-spacing: 1px;
+      user-select: none;
+      cursor: default;
+    }
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #555;
+    }
+    nav ul li a.active,
+    nav ul li a:hover {
+      color: #e03e2f;
+    }
+    .btn-reservation {
+      background: #e03e2f;
+      border-radius: 30px;
+      border: none;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-reservation:hover {
+      background: #b72c20;
+    }
+
+    /* Main Container */
+    main.container {
+      max-width: 900px;
+      margin: 3rem auto 5rem;
+      padding: 0 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+    }
+    /* Heading */
+    main.container h1 {
+      font-weight: 600;
+      font-size: 2.8rem;
+      text-align: center;
+      margin: 2.5rem 0 1.8rem;
+      color: #3a3a3a;
+      letter-spacing: 0.05em;
+    }
+    /* Story text */
+    main.container p.story-text {
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: #555;
+      text-align: justify;
+      margin: 0 0 2.5rem;
+      padding: 0 0.5rem;
+    }
+    /* Image with red frame and shadow */
+    main.container img.story-image {
+      display: block;
+      margin: 0 auto 2.5rem auto;
+      width: 100%;
+      max-width: 700px;
+      height: 350px;
+      object-fit: cover;
+      border: 6px solid #e03e2f;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(224, 62, 47, 0.4);
+    }
+    /* Button below image */
+    main.container a.btn-menu {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 3rem;
+      background-color: #e03e2f;
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      box-shadow: 0 6px 15px rgba(224, 62, 47, 0.6);
+      transition: background-color 0.3s ease;
+    }
+    main.container a.btn-menu:hover {
+      background-color: #b72c20;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      main.container {
+        margin: 2rem 1rem 4rem;
+      }
+      main.container h1 {
+        font-size: 2.1rem;
+      }
+      main.container img.story-image {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Crispy Kitchen</div>
+    <ul>
+      <li><a href="hotel.html">Home</a></li>
+      <li><a href="story.html" class="active">Story</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="#">Our Updates</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="btn-reservation">Reservation</button>
+  </nav>
+
+  <main class="container" itemscope itemtype="https://schema.org/Article">
+    <h1 itemprop="headline">Our Story</h1>
+    <p class="story-text" itemprop="articleBody">
+      Welcome to Crispy Kitchen! Founded in 2010, our mission has always been to serve delicious food with a crispy touch.
+      We believe in using fresh ingredients and traditional recipes passed down through generations. Our chefs pour their passion
+      into every dish to bring you an unforgettable culinary experience.
+    </p>
+
+    <img
+      src="https://m.media-amazon.com/images/I/71imGh4dZBL._AC_UF1000,1000_QL80_.jpg"
+      alt="Crispy Kitchen Story"
+      class="story-image"
+      itemprop="image"
+    />
+
+    <a href="menu.html" class="btn-menu" role="button">View Our Menu</a>
+  </main>
+</body>
+</html>

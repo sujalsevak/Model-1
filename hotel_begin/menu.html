@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Sections</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      position: fixed;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 20px 60px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .reservation-btn {
+      padding: 10px 20px;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .nav-links .active {
+      color: #e63946;
+    }
+
+    .btn {
+      background-color: #e63946;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .hero {
+      background-image: url('https://www.tooplate.com/templates/2129_crispy_kitchen/images/header/luisa-brimble-aFzg83dvnAI-unsplash.jpg');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-top: 80px; /* compensate for fixed navbar */
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h2 {
+      font-size: 50px;
+      font-weight: 700;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3rem;
+      margin: 2rem 0 1rem;
+    }
+
+    /* General menu section */
+    .menu-section {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      height: 470px;
+      padding: 0 20px 40px;
+    }
+
+    /* Breakfast and Dinner menu items width */
+    .menu-section.breakfast .menu-item,
+    .menu-section.dinner .menu-item {
+      width: 30%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Lunch menu items wider */
+    .menu-section.lunch .menu-item {
+      width: 45%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect for all menu sections */
+    .menu-section.breakfast .menu-item:hover,
+    .menu-section.lunch .menu-item:hover,
+    .menu-section.dinner .menu-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .menu-item h3 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+    }
+
+    .menu-item .price {
+      color: orange;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .menu-item .old-price {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 0.9rem;
+    }
+
+    .rating {
+      color: #ffaa00;
+      font-weight: bold;
+      margin: 4px 0;
+    }
+
+    .reviews {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-section {
+        flex-direction: column;
+        align-items: center;
+        height: auto; /* allow height to adjust */
+      }
+
+      .menu-item {
+        width: 90% !important;
+        margin-bottom: 20px;
+      }
+    }
+
+    .footer {
+      background: url('https://www.tooplate.com/templates/2129_crispy_kitchen/images/news/pablo-merchan-montes-Orz90t6o0e4-unsplash.jpg') no-repeat center center/cover;
+      color: white;
+      padding: 60px 20px 30px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      z-index: 1;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+      margin: 20px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .footer-section p {
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #444;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .footer-social a {
+      margin-right: 2px;
+      font-size: 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-section {
+        text-align: center;
+      }
+    } 
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Crispy Kitchen</div>
+    <ul class="nav-links">
+      <li><a href="index.html" >Home</a></li>
+      <li><a href="Story.html">Story</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="our_updates.html">Our Updates</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="reservation-btn">Reservation</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Our Menus</h2>
+      <p>Perfect for all Breakfast, Lunch and Dinner</p>
+    </div>
+  </section>
+
+  <h2>Breakfast Menu</h2>
+  <div class="menu-section breakfast">
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/brett-jordan-8xt8-HIFqc8-unsplash.jpg" alt="Fresh Start" />
+      <h3>Fresh Start</h3>
+      <div class="price">$24.50</div>
+      <div class="rating">⭐ 4.4/5</div>
+      <div class="reviews">128 Reviews</div>
+    </div>
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/louis-hansel-dphM2U1xq0U-unsplash.jpg" alt="Baked Creamy" />
+      <h3>Baked Creamy</h3>
+      <div class="price">$16.50</div>
+      <div class="rating">⭐ 3/5</div>
+      <div class="reviews">64 Reviews</div>
+    </div>
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/breakfast/lucas-swennen-1W_MyJSRLuQ-unsplash.jpg" alt="Burger Set" />
+      <h3>Burger Set</h3>
+      <div class="price">$24.50 <span class="old-price">$36.50</span></div>
+      <div class="rating">⭐ 3/5</div>
+      <div class="reviews">32 Reviews</div>
+    </div>
+  </div>
+
+  <h2>Lunch Menu</h2>
+  <div class="menu-section lunch">
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/louis-hansel-cH5IPjaAYyo-unsplash.jpg" alt="Super Steak Set" />
+      <h3>Super Steak Set</h3>
+      <div class="price">$32.75 <span class="old-price">$55</span></div>
+      <div class="rating">⭐ 4.2/5</div>
+      <div class="reviews">66 Reviews</div>
+    </div>
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/lunch/louis-hansel-rheOvfxOlOA-unsplash.jpg" alt="Bread & Steak Set" />
+      <h3>Bread & Steak Set</h3>
+      <div class="price">$42.50</div>
+      <div class="rating">⭐ 3/5</div>
+      <div class="reviews">84 Reviews</div>
+    </div>
+  </div>
+
+  <h2>Dinner Menu</h2>
+  <div class="menu-section dinner">
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/farhad-ibrahimzade-ZipYER3NLhY-unsplash.jpg" alt="Seafood Set" />
+      <h3>Seafood Set</h3>
+      <div class="price">$65.50</div>
+      <div class="rating">⭐ 4.4/5</div>
+      <div class="reviews">102 Reviews</div>
+    </div>
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/keriliwi-c3mFafsFz2w-unsplash.jpg" alt="Premium Steak" />
+      <h3>Premium Steak</h3>
+      <div class="price">$74.25</div>
+      <div class="rating">⭐ 3/5</div>
+      <div class="reviews">56 Reviews</div>
+    </div>
+    <div class="menu-item">
+      <img src="https://www.tooplate.com/templates/2129_crispy_kitchen/images/dinner/farhad-ibrahimzade-isHUj3N0194-unsplash.jpg" alt="Salmon Set" />
+      <h3>Salmon Set</h3>
+      <div class="price">$60</div>
+      <div class="rating">⭐ 3/5</div>
+      <div class="reviews">76 Reviews</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h2>Crispy Kitchen</h2>
+      </div>
+
+      <div class="footer-section">
+        <h3>Location</h3>
+        <p>121 Einstein Loop N, Bronx, NY 10475, United States</p>
+        <a href="#">Directions</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Opening Hours</h3>
+        <p>Monday - Friday</p>
+        <p>10:00 AM - 08:00 PM</p>
+        <p>Tel: 010-02-0340</p>
+      </div>
+
+      <div class="footer-section footer-social">
+        <h3>Social</h3>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright © 2022 Crispy Kitchen Co., Ltd. <br> Design: Tooplate</p>
+    </div>
+  </footer>
+</body>
+</html>

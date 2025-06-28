@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Web Code Editor</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/dracula.min.css"
+  />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #282a36;
+      color: #f8f8f2;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+    header {
+      background-color: #44475a;
+      padding: 15px 20px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f8f8f2;
+      user-select: none;
+      border-bottom: 3px solid #6272a4;
+    }
+    #editor-container {
+      display: flex;
+      flex-direction: column;
+      height: 50vh;
+      border: 2px solid #6272a4;
+      border-radius: 8px;
+      margin: 15px 20px 5px 20px;
+      background-color: #44475a;
+      box-shadow:
+        0 0 8px 2px #bd93f9aa,
+        inset 0 0 6px 1px #bd93f9bb;
+    }
+
+    .tabs {
+      display: flex;
+      background: #6272a4;
+      border-bottom: 3px solid #bd93f9;
+      border-radius: 8px 8px 0 0;
+      user-select: none;
+    }
+    .tab {
+      position: relative;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #f8f8f2cc;
+      border-right: 1px solid #44475a;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      background: #6272a4;
+      transition: background 0.3s, color 0.3s;
+    }
+    .tab:last-child {
+      border-right: none;
+    }
+    .tab.active {
+      background: #bd93f9;
+      color: #282a36;
+      font-weight: 700;
+      box-shadow: 0 0 10px 3px #bd93f9cc;
+    }
+
+    .rename-icon,
+    .close-icon {
+      margin-left: 10px;
+      font-size: 14px;
+      color: #f8f8f2cc;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    .rename-icon:hover {
+      color: #ff79c6;
+    }
+    .close-icon:hover {
+      color: #ff5555;
+    }
+
+    #addTabBtn {
+      padding: 10px 20px;
+      background: #6272a4;
+      cursor: pointer;
+      color: #bd93f9cc;
+      font-weight: 600;
+      user-select: none;
+      border-left: 1px solid #44475a;
+      transition: background 0.3s, color 0.3s;
+    }
+    #addTabBtn:hover {
+      background: #bd93f9;
+      color: #282a36;
+      box-shadow: 0 0 10px 3px #bd93f9cc;
+    }
+
+    #editors-container {
+      flex-grow: 1;
+      position: relative;
+    }
+    .CodeMirror {
+      height: 100%;
+      border-radius: 0 0 8px 8px;
+      outline: none;
+      font-size: 14px;
+      background-color: #282a36;
+      color: #f8f8f2;
+      border: 2px solid #bd93f9;
+      box-shadow:
+        0 0 12px 3px #bd93f9aa,
+        inset 0 0 10px 2px #bd93f9cc;
+    }
+    .CodeMirror-focused {
+      border-color: #ff79c6 !important;
+      box-shadow:
+        0 0 20px 5px #ff79c6cc,
+        inset 0 0 15px 3px #ff79c6cc !important;
+      outline: none;
+    }
+    #runBtn {
+      margin: 8px 10px 10px 10px;
+      align-self: flex-end;
+      padding: 8px 20px;
+      background-color: #bd93f9;
+      color: #282a36;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 12px 3px #bd93f9cc;
+    }
+    #runBtn:hover {
+      background-color: #ff79c6;
+      box-shadow: 0 0 20px 6px #ff79c6cc;
+    }
+
+    #iframe-wrapper {
+      flex-grow: 1;
+      margin: 0 20px 20px 20px;
+      border-radius: 8px;
+      border: 2px solid #bd93f9;
+      box-shadow:
+        0 0 16px 5px #bd93f9cc,
+        inset 0 0 12px 3px #bd93f9cc;
+      background-color: #282a36;
+      width: calc(100% - 40px);
+      height: 45vh;
+      overflow: auto; 
+      display: block;
+    }
+
+    #iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .new-tab-name {
+      background-color: #44475a;
+      border: 1px solid #ff79c6;
+      color: #f8f8f2;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      width: 100px;
+      outline: none;
+    }
+    .new-tab-name.error {
+      border-color: #ff5555;
+      box-shadow: 0 0 10px 3px #ff5555cc;
+      background-color: #5a2b2b;
+    }
+  </style>
+</head>
+<body>
+  <header>Professional Web Code Editor</header>
+
+  <div id="editor-container">
+    <div class="tabs" id="tabs-container">
+    </div>
+    <div id="editors-container">
+    </div>
+    <button id="runBtn">Run Code</button>
+  </div>
+
+  <div id="iframe-wrapper">
+    <iframe id="output" sandbox="allow-scripts allow-same-origin"></iframe>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/css/css.min.js"></script>
+
+  <script>
+    const tabsContainer = document.getElementById('tabs-container');
+    const editorsContainer = document.getElementById('editors-container');
+    const runBtn = document.getElementById('runBtn');
+    const output = document.getElementById('output');
+
+    let tabIdCounter = 0;
+    let tabs = [];
+
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+
+    function createTab({ name, mode, code }) {
+      const id = ++tabIdCounter;
+
+      const tabEl = document.createElement('div');
+      tabEl.className = 'tab';
+      tabEl.dataset.id = id;
+      tabEl.textContent = name;
+
+      const renameIcon = document.createElement('span');
+      renameIcon.className = 'rename-icon';
+      renameIcon.title = 'Rename tab';
+      renameIcon.textContent = '✎';
+      tabEl.appendChild(renameIcon);
+
+      const closeIcon = document.createElement('span');
+      closeIcon.className = 'close-icon';
+      closeIcon.title = 'Close tab';
+      closeIcon.textContent = '×';
+      tabEl.appendChild(closeIcon);
+
+      tabsContainer.insertBefore(tabEl, addTabBtn);
+      updateTabOrder();
+
+      const textarea = document.createElement('textarea');
+      editorsContainer.appendChild(textarea);
+
+      const editor = CodeMirror.fromTextArea(textarea, {
+        mode,
+        theme: 'dracula',
+        lineNumbers: true,
+        tabSize: 2,
+        lineWrapping: true,
+        autoCloseTags: mode === 'xml',
+      });
+      editor.setValue(code);
+
+      editor.on('change', debounce(runCode, 500));
+
+      const tab = { id, name, mode, editor, tabEl };
+      tabs.push(tab);
+
+      tabEl.addEventListener('click', (e) => {
+        if (e.target === renameIcon) {
+          startRename(tab);
+          return;
+        }
+        if (e.target === closeIcon) {
+          closeTab(tab);
+          return;
+        }
+        activateTab(tab.id);
+      });
+
+      if (tabs.length === 1) {
+        activateTab(tab.id);
+      } else {
+        editor.getWrapperElement().style.display = 'none';
+      }
+
+      return tab;
+    }
+
+    function activateTab(id) {
+      tabs.forEach((t) => {
+        const isActive = t.id === id;
+        t.tabEl.classList.toggle('active', isActive);
+        t.editor.getWrapperElement().style.display = isActive ? 'block' : 'none';
+      });
+    }
+
+    function closeTab(tab) {
+      if (tabs.length === 1) {
+        alert("Cannot close the last tab.");
+        return;
+      }
+
+      tab.tabEl.remove();
+      tab.editor.toTextArea();
+      tab.editor.getWrapperElement().remove();
+
+      tabs = tabs.filter((t) => t.id !== tab.id);
+
+      if (tabs.length) {
+        activateTab(tabs[tabs.length - 1].id);
+      }
+      runCode();
+    }
+
+    function startRename(tab) {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = tab.name;
+      input.className = 'new-tab-name';
+      tab.tabEl.textContent = '';
+      tab.tabEl.appendChild(input);
+      input.focus();
+      input.select();
+
+      function finishRename() {
+        const newName = input.value.trim();
+
+        if (
+          newName === '' ||
+          tabs.some((t) => t.id !== tab.id && t.name === newName)
+        ) {
+          alert('Name already exists or is empty.');
+          input.classList.add('error');
+          input.focus();
+          return;
+        }
+        if (!/(.html|.css|.js)$/i.test(newName)) {
+          alert('Filename must end with .html, .css or .js');
+          input.classList.add('error');
+          input.focus();
+          return;
+        }
+
+        tab.name = newName;
+
+        tab.tabEl.textContent = newName;
+
+        const renameIcon = document.createElement('span');
+        renameIcon.className = 'rename-icon';
+        renameIcon.title = 'Rename tab';
+        renameIcon.textContent = '✎';
+        tab.tabEl.appendChild(renameIcon);
+
+        const closeIcon = document.createElement('span');
+        closeIcon.className = 'close-icon';
+        closeIcon.title = 'Close tab';
+        closeIcon.textContent = '×';
+        tab.tabEl.appendChild(closeIcon);
+
+        renameIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          startRename(tab);
+        });
+        closeIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeTab(tab);
+        });
+
+        updateTabOrder();
+
+        runCode();
+      }
+
+      input.addEventListener('blur', finishRename);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          finishRename();
+        }
+        if (e.key === 'Escape') {
+          tab.tabEl.textContent = tab.name;
+
+          const renameIcon = document.createElement('span');
+          renameIcon.className = 'rename-icon';
+          renameIcon.title = 'Rename tab';
+          renameIcon.textContent = '✎';
+          tab.tabEl.appendChild(renameIcon);
+
+          const closeIcon = document.createElement('span');
+          closeIcon.className = 'close-icon';
+          closeIcon.title = 'Close tab';
+          closeIcon.textContent = '×';
+          tab.tabEl.appendChild(closeIcon);
+
+          renameIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startRename(tab);
+          });
+          closeIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeTab(tab);
+          });
+        }
+      });
+    }
+
+    function updateTabOrder() {
+      tabsContainer.appendChild(addTabBtn);
+    }
+
+    function runCode() {
+      const htmlTab = tabs.find(t => /\.html$/i.test(t.name));
+      const cssTab = tabs.find(t => /\.css$/i.test(t.name));
+      const jsTab = tabs.find(t => /\.js$/i.test(t.name));
+
+      const html = htmlTab ? htmlTab.editor.getValue() : '';
+      const css = cssTab ? `<style>${cssTab.editor.getValue()}</style>` : '';
+      const js = jsTab ? `<script>${jsTab.editor.getValue()}<\/script>` : '';
+
+      const full = html + css + js;
+
+      output.srcdoc = full;
+    }
+    const addTabBtn = document.createElement('div');
+    addTabBtn.id = 'addTabBtn';
+    addTabBtn.textContent = '+ New Tab';
+    tabsContainer.appendChild(addTabBtn);
+
+    addTabBtn.addEventListener('click', () => {
+      let baseName = 'newfile.html';
+      let counter = 1;
+      while (tabs.some(t => t.name === baseName)) {
+        baseName = `newfile${counter}.html`;
+        counter++;
+      }
+      createTab({ name: baseName, mode: 'xml', code: '<!-- New HTML file -->\n' });
+      updateTabOrder();
+    });
+    createTab({ name: 'index.html', mode: 'xml', code: '<!DOCTYPE html>\n<html>\n  <head>\n    <title>My Page</title>\n  </head>\n  <body>\n    <h1>Hello World</h1>\n  </body>\n</html>' });
+    createTab({ name: 'styles.css', mode: 'css', code: 'body { background: #282a36; color: #f8f8f2; font-family: Arial; }' });
+    createTab({ name: 'script.js', mode: 'javascript', code: 'console.log("Hello, world!");' });
+
+    runBtn.addEventListener('click', runCode);
+    runCode();
+  </script>
+</body>
+</html>

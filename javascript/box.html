@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOX</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 200px;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <button onclick="box()">Create Box</button>
+    <div id="box">Hello, Box!</div>
+
+    <script>
+        function box() {
+            document.getElementById("box").style.display = "block";
+        }
+    </script>
+</body>
+</html>

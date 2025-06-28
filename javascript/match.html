@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    mobile<br>
+    <input  id="mob"type="tel">
+    <br>
+    <br>
+    Re Enter mobile<br>
+    <input id="remob"type="tel">
+    <br>
+    <br>
+    <button onclick="valid()">Match</button>
+    
+    <p id="result"></p>
+    <script>
+        function valid(){
+        var a= document.getElementById('mob').value;
+        var b= document.getElementById('remob').value;
+        var z= a==b&&b==a ? "match found!":"Not matched";
+        document.getElementById('result').innerHTML=z;
+        return false;
+        }
+    </script>
+</body>
+</html>
